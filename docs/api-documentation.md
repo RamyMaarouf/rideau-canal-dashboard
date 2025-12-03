@@ -16,7 +16,7 @@ This endpoint retrieves the most recent aggregated data points (one for each loc
         "location": "dows-lake",
         "AvgIceThickness_cm": 28.5,
         "AvgSurfaceTemp_C": -5.2,
-        "SafetyStatus": "Caution"
+        "SafetyStatus": "Safe"
       },
       // ... two more location objects
     ]
@@ -37,7 +37,7 @@ This endpoint retrieves the last 15 aggregated data points across all locations 
         "location": "nac",
         "AvgIceThickness_cm": 31.0,
         "AvgSurfaceTemp_C": -4.0,
-        "SafetyStatus": "Safe"
+        "SafetyStatus": "UnSafe"
       },
       // ... 14 more aggregation objects
     ]
