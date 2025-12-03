@@ -12,16 +12,22 @@ This repository contains the full source code for the public-facing dashboard ap
 * Node.js (v20+ recommended)
 * Access to your **Azure Cosmos DB Account** (Endpoint and Key).
 
-### Installation
+---
+
+## Installation
 1.  Clone this repository.
 2.  Install Node.js dependencies:
     ```bash
     npm install
     ```
 
-### Configuration
+---
+
+## Configuration
 1.  Create a file named **`.env`** in the root directory.
 2.  Populate it with your Azure Cosmos DB connection details, using the structure found in `.env.example`.
+
+---
 
 ## API Endpoints
 The Express server (`server.js`) exposes two endpoints for the dashboard frontend.
@@ -42,3 +48,39 @@ The Express server (`server.js`) exposes two endpoints for the dashboard fronten
     "SafetyStatus": "Caution"
   }
 ]
+```
+
+---
+
+## Deployment to Azure App Service
+
+The application is deployed to Azure App Service (Linux) via GitHub Actions for CI/CD.
+
+### Step-by-step Deployment Guide (High-Level)
+* Ensure a working GitHub Actions workflow is linked to this repository and an Azure App Service instance.
+* Push code to the main branch to trigger a deployment.
+* Critical Step: The PORT variable must be exposed and the startup command configured correctly.
+
+### Configuration Settings
+
+All sensitive credentials MUST be set as Application Settings in the Azure Portal, not hardcoded.
+* COSMOS_ENDPOINT: Full URI including port 443.
+* COSMOS_KEY: Securely stored secret.
+* PORT: Required for the Node.js process to bind correctly on the Linux host.
+
+---
+
+## Dashboard Features
+
+* Real-time Updates: Data is fetched from the /api/latest endpoint every few seconds.
+* Charts and Visualizations: Historical data is presented in line graphs to easily identify safety trends.
+* Safety Status Indicators: The UI uses color coding (Green/Safe, Yellow/Caution, Red/Unsafe) based on the SafetyStatus field from Cosmos DB.
+
+---
+
+## Troubleshooting
+
+### Common Issues and Fixes:
+* "Application Error" on Azure: This means the Node.js server crashed. Check the App Service Log Stream for the specific error (usually a bad environment variable or an incorrect Startup Command).
+* App Service loads but shows no data: Check the Networking settings on your Cosmos DB instance to ensure "Allow access from Azure services" is enabled, preventing a network connection block.
+* Slow performance: Verify that your Cosmos DB Partition Key (/documentId) is being used effectively in your Node.js queries to minimize Request Units (RUs).
