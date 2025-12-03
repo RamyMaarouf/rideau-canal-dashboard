@@ -25,7 +25,7 @@ This repository contains the Node.js Express server and the static frontend file
     ```
     The server will start on `http://localhost:8080`.
 
-## ☁️ Azure Deployment
+## Azure Deployment
 
 This application is designed for Continuous Deployment via **GitHub Actions** to Azure App Service (Linux).
 
