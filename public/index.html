@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rideau Canal Skateway Monitoring</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .safety-card {
+            font-weight: bold;
+            text-align: center;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center text-primary">❄️ Rideau Canal Skateway Live Status ❄️</h1>
+        <p class="text-muted text-center">Data Aggregated Every 5 Minutes | Last Updated: <span id="last-updated">...</span></p>
+        
+        <hr class="mb-4">
+        
+        <h2 class="mb-3">Current Safety Status</h2>
+        <div class="row" id="live-data-cards">
+            <div class="col-12 text-center" id="loading-indicator">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p>Awaiting first aggregation data...</p>
+            </div>
+        </div>
+
+        <hr class="mt-5">
+
+        <h2 class="mb-3">Average Ice Thickness Trend (Last Hour)</h2>
+        <div class="row">
+            <div class="col-12">
+                <canvas id="ice-thickness-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
