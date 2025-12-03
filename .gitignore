@@ -1,0 +1,9 @@
+# .gitignore for Node.js App
+/node_modules
+/.env
+/build
+/dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
